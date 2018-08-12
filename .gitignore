@@ -1,0 +1,13 @@
+lerna-debug.log
+.DS_Store
+.vscode
+npm-debug.log
+node_modules
+Pods/
+webpack-assets.json
+.python-version
+fcm.json
+fb.json
+.idea/
+packages/**/package-lock.json
+package-lock.json
