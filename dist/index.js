@@ -743,6 +743,18 @@ eval("module.exports = function(originalModule) {\n\tif (!originalModule.webpack
 
 /***/ }),
 
+/***/ "./src/actions/index.js":
+/*!******************************!*\
+  !*** ./src/actions/index.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar nextTodoId = 0;\n\nvar addTodo = exports.addTodo = function addTodo(text) {\n  return {\n    type: 'ADD_TODO',\n    id: nextTodoId++,\n    text: text\n  };\n};\n\nvar toggleTodo = exports.toggleTodo = function toggleTodo(id) {\n  return {\n    type: 'TOGGLE_TODO',\n    id: id\n  };\n};\n\nvar setVisibilityFilter = exports.setVisibilityFilter = function setVisibilityFilter(filter) {\n  return {\n    type: 'SET_VISIBILITY_FILTER',\n    filter: filter\n  };\n};\n\n//# sourceURL=webpack:///./src/actions/index.js?");
+
+/***/ }),
+
 /***/ "./src/components/App.js":
 /*!*******************************!*\
   !*** ./src/components/App.js ***!
@@ -751,7 +763,91 @@ eval("module.exports = function(originalModule) {\n\tif (!originalModule.webpack
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar App = function App() {\n  return _react2.default.createElement(\n    'div',\n    null,\n    'Hello World!'\n  );\n};\n\nexports.default = App;\n\n//# sourceURL=webpack:///./src/components/App.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _AddTodo = __webpack_require__(/*! ../containers/AddTodo */ \"./src/containers/AddTodo.js\");\n\nvar _AddTodo2 = _interopRequireDefault(_AddTodo);\n\nvar _VisibleTodoList = __webpack_require__(/*! ../containers/VisibleTodoList */ \"./src/containers/VisibleTodoList.js\");\n\nvar _VisibleTodoList2 = _interopRequireDefault(_VisibleTodoList);\n\nvar _Footer = __webpack_require__(/*! ./Footer */ \"./src/components/Footer.js\");\n\nvar _Footer2 = _interopRequireDefault(_Footer);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar App = function App() {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(_AddTodo2.default, null),\n    _react2.default.createElement(_VisibleTodoList2.default, null),\n    _react2.default.createElement(_Footer2.default, null)\n  );\n};\nexports.default = App;\n\n//# sourceURL=webpack:///./src/components/App.js?");
+
+/***/ }),
+
+/***/ "./src/components/Footer.js":
+/*!**********************************!*\
+  !*** ./src/components/Footer.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Link = __webpack_require__(/*! ./Link */ \"./src/components/Link.js\");\n\nvar _Link2 = _interopRequireDefault(_Link);\n\nvar _FilterLink = __webpack_require__(/*! ../containers/FilterLink */ \"./src/containers/FilterLink.js\");\n\nvar _FilterLink2 = _interopRequireDefault(_FilterLink);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Footer = function Footer() {\n  return _react2.default.createElement(\n    'p',\n    null,\n    'show:',\n    \" \",\n    _react2.default.createElement(\n      _FilterLink2.default,\n      { filter: 'SHOW_ALL' },\n      'All'\n    ),\n    \", \",\n    _react2.default.createElement(\n      _FilterLink2.default,\n      { filter: 'SHOW_ACTIVE' },\n      'Active'\n    ),\n    \", \",\n    _react2.default.createElement(\n      _FilterLink2.default,\n      { filter: 'SHOW_COMPLETED' },\n      'Completed'\n    )\n  );\n};\n\nexports.default = Footer;\n\n//# sourceURL=webpack:///./src/components/Footer.js?");
+
+/***/ }),
+
+/***/ "./src/components/Link.js":
+/*!********************************!*\
+  !*** ./src/components/Link.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Link = function Link(_ref) {\n  var active = _ref.active,\n      children = _ref.children,\n      _onClick = _ref.onClick;\n\n  if (active) {\n    return _react2.default.createElement(\n      'span',\n      null,\n      children\n    );\n  }\n  return _react2.default.createElement(\n    'a',\n    { href: '#',\n      onClick: function onClick(e) {\n        e.preventDefault();\n        _onClick();\n      }\n    },\n    children\n  );\n};\n\nLink.propTypes = {\n  active: _propTypes2.default.bool.isRequired,\n  children: _propTypes2.default.node.isRequired,\n  onClick: _propTypes2.default.func.isRequired\n};\n\nexports.default = Link;\n\n//# sourceURL=webpack:///./src/components/Link.js?");
+
+/***/ }),
+
+/***/ "./src/components/Todo.js":
+/*!********************************!*\
+  !*** ./src/components/Todo.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Todo = function Todo(_ref) {\n  var onClick = _ref.onClick,\n      completed = _ref.completed,\n      text = _ref.text;\n  return _react2.default.createElement(\n    'li',\n    {\n      onClick: onClick,\n      style: { textDecoration: completed ? 'line-through' : 'none' } },\n    text\n  );\n};\n\nTodo.propTypes = {\n  onClick: _propTypes2.default.func.isRequired,\n  completed: _propTypes2.default.bool.isRequired,\n  text: _propTypes2.default.string.isRequired\n};\n\nexports.default = Todo;\n\n//# sourceURL=webpack:///./src/components/Todo.js?");
+
+/***/ }),
+
+/***/ "./src/components/TodoList.js":
+/*!************************************!*\
+  !*** ./src/components/TodoList.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _Todo = __webpack_require__(/*! ./Todo */ \"./src/components/Todo.js\");\n\nvar _Todo2 = _interopRequireDefault(_Todo);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar TodoList = function TodoList(_ref) {\n  var todos = _ref.todos,\n      onTodoClick = _ref.onTodoClick;\n  return _react2.default.createElement(\n    'ul',\n    null,\n    todos.map(function (todo) {\n      return _react2.default.createElement(_Todo2.default, _extends({\n        key: todo.id\n      }, todo, {\n        onClick: function onClick() {\n          return onTodoClick(todo.id);\n        }\n      }));\n    })\n  );\n};\n\nTodoList.propTypes = {\n  todos: _propTypes2.default.arrayOf(_propTypes2.default.shape({\n    id: _propTypes2.default.number.isRequired,\n    text: _propTypes2.default.string.isRequired,\n    onTodoClick: _propTypes2.default.func.isRequired\n  }).isRequired).isRequired\n};\n\nexports.default = TodoList;\n\n//# sourceURL=webpack:///./src/components/TodoList.js?");
+
+/***/ }),
+
+/***/ "./src/containers/AddTodo.js":
+/*!***********************************!*\
+  !*** ./src/containers/AddTodo.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n\nvar _actions = __webpack_require__(/*! ../actions */ \"./src/actions/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar AddTodo = function AddTodo(_ref) {\n  var dispatch = _ref.dispatch;\n\n  var input = void 0;\n\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement('input', { ref: function ref(node) {\n        input = node;\n      } }),\n    _react2.default.createElement(\n      'button',\n      { onClick: function onClick() {\n          dispatch((0, _actions.addTodo)(input.value));\n          input.value = '';\n        } },\n      'Add Todo'\n    )\n  );\n};\nAddTodo = (0, _reactRedux.connect)()(AddTodo);\n\nexports.default = AddTodo;\n\n//# sourceURL=webpack:///./src/containers/AddTodo.js?");
+
+/***/ }),
+
+/***/ "./src/containers/FilterLink.js":
+/*!**************************************!*\
+  !*** ./src/containers/FilterLink.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n\nvar _actions = __webpack_require__(/*! ../actions */ \"./src/actions/index.js\");\n\nvar _Link = __webpack_require__(/*! ../components/Link */ \"./src/components/Link.js\");\n\nvar _Link2 = _interopRequireDefault(_Link);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar mapStateToProps = function mapStateToProps(state, ownProps) {\n  return {\n    active: ownProps.filter === state.visibilityFilter\n  };\n};\n\nvar mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {\n  return {\n    onClick: function onClick() {\n      dispatch((0, _actions.setVisibilityFilter)(ownProps.filter));\n    }\n  };\n};\n\nvar FilterLink = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Link2.default);\n\nexports.default = FilterLink;\n\n//# sourceURL=webpack:///./src/containers/FilterLink.js?");
+
+/***/ }),
+
+/***/ "./src/containers/VisibleTodoList.js":
+/*!*******************************************!*\
+  !*** ./src/containers/VisibleTodoList.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n\nvar _TodoList = __webpack_require__(/*! ../components/TodoList */ \"./src/components/TodoList.js\");\n\nvar _TodoList2 = _interopRequireDefault(_TodoList);\n\nvar _actions = __webpack_require__(/*! ../actions */ \"./src/actions/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar getVisibleTodos = function getVisibleTodos(todos, filter) {\n  switch (filter) {\n    case 'SHOW_ALL':\n      return todos;\n    case 'SHOW_COMPLETED':\n      return todos.filter(function (t) {\n        return t.completed;\n      });\n    case 'SHOW_ACTIVE':\n      return todos.filter(function (t) {\n        return !t.completed;\n      });\n    default:\n\n  }\n};\nvar mapStateToProps = function mapStateToProps(state) {\n  return {\n    todos: getVisibleTodos(state.todos, state.visibilityFilter)\n  };\n};\n\nvar mapDispatchToProps = function mapDispatchToProps(dispatch) {\n  return {\n    onTodoClick: function onTodoClick(id) {\n      dispatch((0, _actions.toggleTodo)(id));\n    }\n  };\n};\n\nvar VisibleTodoList = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_TodoList2.default);\nexports.default = VisibleTodoList;\n\n//# sourceURL=webpack:///./src/containers/VisibleTodoList.js?");
 
 /***/ }),
 
@@ -763,7 +859,43 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n\nvar _App = __webpack_require__(/*! ./components/App */ \"./src/components/App.js\");\n\nvar _App2 = _interopRequireDefault(_App);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(0, _reactDom.render)(_react2.default.createElement(\n  _reactRedux.Provider,\n  null,\n  _react2.default.createElement(_App2.default, null)\n), document.getElementById('root'));\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _reducers = __webpack_require__(/*! ./reducers */ \"./src/reducers/index.js\");\n\nvar _reducers2 = _interopRequireDefault(_reducers);\n\nvar _actions = __webpack_require__(/*! ./actions */ \"./src/actions/index.js\");\n\nvar _App = __webpack_require__(/*! ./components/App */ \"./src/components/App.js\");\n\nvar _App2 = _interopRequireDefault(_App);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar store = (0, _redux.createStore)(_reducers2.default);\n\nstore.dispatch((0, _actions.addTodo)('Hello React!'));\nstore.dispatch((0, _actions.addTodo)('Hello Redux!'));\nstore.dispatch((0, _actions.toggleTodo)(0));\n\nconsole.log(store.getState()); // => Object {todos: Array[0], visibilityFilter: \"SHOW_ALL\"}\nstore.dispatch((0, _actions.setVisibilityFilter)('SHOW_COMPLETED'));\nconsole.log(store.getState()); // => Object {todos: Array[0], visibilityFilter: \"SHOW_COMPLETED\"}\n\n(0, _reactDom.render)(_react2.default.createElement(\n  _reactRedux.Provider,\n  { store: store },\n  _react2.default.createElement(_App2.default, null)\n), document.getElementById('root'));\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/reducers/index.js":
+/*!*******************************!*\
+  !*** ./src/reducers/index.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _todos = __webpack_require__(/*! ./todos */ \"./src/reducers/todos.js\");\n\nvar _todos2 = _interopRequireDefault(_todos);\n\nvar _visibilityFilter = __webpack_require__(/*! ./visibilityFilter */ \"./src/reducers/visibilityFilter.js\");\n\nvar _visibilityFilter2 = _interopRequireDefault(_visibilityFilter);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar todoApp = (0, _redux.combineReducers)({\n  todos: _todos2.default,\n  visibilityFilter: _visibilityFilter2.default\n});\n\nexports.default = todoApp;\n\n//# sourceURL=webpack:///./src/reducers/index.js?");
+
+/***/ }),
+
+/***/ "./src/reducers/todos.js":
+/*!*******************************!*\
+  !*** ./src/reducers/todos.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nfunction _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }\n\nvar todo = function todo(state, action) {\n  switch (action.type) {\n    case 'ADD_TODO':\n      return {\n        id: action.id,\n        text: action.text,\n        completed: false\n      };\n    case 'TOGGLE_TODO':\n      if (state.id !== action.id) {\n        return state;\n      }\n      return Object.assign({}, state, {\n        completed: !state.completed\n      });\n    default:\n      return state;\n  }\n};\n\nvar todos = function todos() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];\n  var action = arguments[1];\n\n  switch (action.type) {\n    case 'ADD_TODO':\n      return [].concat(_toConsumableArray(state), [todo(undefined, action)]);\n    case 'TOGGLE_TODO':\n      return state.map(function (t) {\n        return todo(t, action);\n      });\n    default:\n      return state;\n  }\n};\n\nexports.default = todos;\n\n//# sourceURL=webpack:///./src/reducers/todos.js?");
+
+/***/ }),
+
+/***/ "./src/reducers/visibilityFilter.js":
+/*!******************************************!*\
+  !*** ./src/reducers/visibilityFilter.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar visibilityFilter = function visibilityFilter() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'SHOW_ALL';\n  var action = arguments[1];\n\n  switch (action.type) {\n    case 'SET_VISIBILITY_FILTER':\n      return action.filter;\n    default:\n      return state;\n  }\n};\n\nexports.default = visibilityFilter;\n\n//# sourceURL=webpack:///./src/reducers/visibilityFilter.js?");
 
 /***/ }),
 
